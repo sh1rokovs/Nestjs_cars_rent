@@ -6,6 +6,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "postinstall": "engine-version",
+    "prestart": "engine-version",
+    "prebuild": "engine-version",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -35,6 +38,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "dotenv": "^16.0.3",
+    "engine-version": "^1.0.2",
     "global": "^4.4.0",
     "pg": "^8.10.0",
     "reflect-metadata": "^0.1.13",
@@ -66,6 +70,11 @@
     "ts-node": "^10.9.1",
     "tsconfig-paths": "4.2.0",
     "typescript": "^4.7.4"
+  },
+  "engines": {
+    "node": ">=16",
+    "git": "*",
+    "yarn": ">=1.20"
   },
   "jest": {
     "moduleFileExtensions": [

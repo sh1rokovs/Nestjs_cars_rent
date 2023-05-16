@@ -6,7 +6,6 @@ import * as path from 'path';
 
 import { AuthModule } from './app/auth/auth.module';
 import { CarsModule } from './app/cars/cars.module';
-import { FilesModule } from './app/files/files.module';
 import { RolesModule } from './app/roles/roles.module';
 import { UsersModule } from './app/users/users.module';
 import { Car } from './app/cars/entity/car.entity';
@@ -37,7 +36,6 @@ import { User } from './app/users/entity/user.entity';
     UsersModule,
     RolesModule,
     AuthModule,
-    FilesModule,
     CarsModule,
   ],
 })

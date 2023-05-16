@@ -1,13 +1,5 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
-
-import { User } from 'src/app/users/entity/user.entity';
 
 @Entity('cars')
 export class Car {
@@ -34,8 +26,4 @@ export class Car {
   @ApiProperty({ example: '12334.jpg', description: 'Фотография автомобиля' })
   @Column()
   img: string;
-
-  @OneToOne(() => User, { nullable: true })
-  @JoinColumn()
-  user: User[];
 }

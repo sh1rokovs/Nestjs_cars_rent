@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { UsersService } from '../users/users.service';
 import { CreateCarDto } from './dto/create-car.dto';
 import { Car } from './entity/car.entity';
 
@@ -11,7 +10,6 @@ export class CarsService {
   constructor(
     @InjectRepository(Car)
     private readonly carsRepository: Repository<Car>,
-    private readonly usersService: UsersService,
   ) {}
 
   async createCar(createCar: CreateCarDto): Promise<Car> {
@@ -26,13 +24,14 @@ export class CarsService {
     return await this.carsRepository.save(car);
   }
 
+  async getCar(id: number): Promise<Car> {
+    return await this.carsRepository.findOneBy({ id: id });
+  }
+
   async getAllNoRent(): Promise<Car[]> {
     return await this.carsRepository.find({
       where: {
         rent: false,
-      },
-      relations: {
-        user: true,
       },
     });
   }
@@ -41,9 +40,6 @@ export class CarsService {
     return await this.carsRepository.find({
       where: {
         rent: true,
-      },
-      relations: {
-        user: true,
       },
     });
   }

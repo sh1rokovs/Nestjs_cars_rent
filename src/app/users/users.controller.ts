@@ -15,6 +15,7 @@ import { UsersService } from './users.service';
 import { Roles } from 'src/decorators/roles-auth.decorator';
 import { RoleGuard } from 'src/guards/roles.guards';
 import { AddRoleDto } from '../roles/dto/add-role.dto';
+import { AddCarDto } from '../cars/dto/add-car.dto';
 
 @ApiTags('Пользователи')
 @Controller('users')
@@ -42,6 +43,13 @@ export class UsersController {
   @Post('/role')
   addRole(@Body() dto: AddRoleDto) {
     return this.usersService.addRole(dto);
+  }
+
+  @ApiOperation({ summary: 'Взять машину в аренду' })
+  @ApiResponse({ status: 200, type: AddCarDto })
+  @Post('/car-add')
+  addCar(@Body() dto: AddCarDto) {
+    return this.usersService.addCar(dto);
   }
 
   @ApiOperation({ summary: 'Получить конкретного пользователя' })

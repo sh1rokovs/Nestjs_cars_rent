@@ -6,6 +6,8 @@ import { User } from './entity/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { AddRoleDto } from '../roles/dto/add-role.dto';
 import { RolesService } from '../roles/roles.service';
+import { AddCarDto } from '../cars/dto/add-car.dto';
+import { CarsService } from '../cars/cars.service';
 
 @Injectable()
 export class UsersService {
@@ -13,6 +15,7 @@ export class UsersService {
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
     private readonly rolesService: RolesService,
+    private readonly carsService: CarsService,
   ) {}
 
   async createUser(createUser: CreateUserDto): Promise<User> {
@@ -24,12 +27,15 @@ export class UsersService {
     user.password = createUser.password;
     user.phone = createUser.phone;
     user.roles = [role];
+    user.roles = [];
 
     return await this.usersRepository.save(user);
   }
 
   async getAllUsers(): Promise<User[]> {
-    return await this.usersRepository.find({ relations: { roles: true } });
+    return await this.usersRepository.find({
+      relations: { roles: true, cars: true },
+    });
   }
 
   async getOneUser(id: number): Promise<User> {
@@ -43,6 +49,7 @@ export class UsersService {
       },
       relations: {
         roles: true,
+        cars: true,
       },
     });
   }
@@ -67,6 +74,25 @@ export class UsersService {
       'Пользователь или роль не найдены',
       HttpStatus.NOT_FOUND,
     );
+  }
+
+  async addCar(addCar: AddCarDto): Promise<AddCarDto | void> {
+    const user = await this.usersRepository.findOne({
+      where: {
+        id: addCar.userId,
+      },
+    });
+    const car = await this.carsService.getCar(addCar.id);
+
+    if (car && user) {
+      user.cars = [car];
+
+      await this.usersRepository.save(user);
+
+      return addCar;
+    }
+
+    throw new HttpException('Машина не найдена', HttpStatus.NOT_FOUND);
   }
 
   async remove(id: number): Promise<void> {

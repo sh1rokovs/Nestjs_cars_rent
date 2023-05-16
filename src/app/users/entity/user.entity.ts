@@ -8,6 +8,7 @@ import {
 import { ApiProperty } from '@nestjs/swagger';
 
 import { Role } from 'src/app/roles/entity/role.entity';
+import { Car } from 'src/app/cars/entity/car.entity';
 
 @Entity('users')
 export class User {
@@ -40,4 +41,8 @@ export class User {
   @ManyToMany(() => Role)
   @JoinTable()
   roles: Role[];
+
+  @ManyToMany(() => Car)
+  @JoinTable()
+  cars: Car[];
 }

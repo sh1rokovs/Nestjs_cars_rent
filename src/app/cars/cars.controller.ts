@@ -42,6 +42,14 @@ export class CarsController {
     return this.carsService.rentCar(id);
   }
 
+  @Get(':id')
+  @ApiOperation({ summary: 'Получить конкретный автомобиль' })
+  @ApiResponse({ status: 200, type: Car })
+  @ApiResponse({ status: 404, description: 'Автомобиль не найден' })
+  getCar(@Param('id') id: number): Promise<Car> {
+    return this.carsService.getCar(id);
+  }
+
   @Get('/unrent/:id')
   @ApiOperation({ summary: 'Снять автомобиль с брони' })
   @ApiResponse({ status: 200, type: Car })

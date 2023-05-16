@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { User } from '../../database/entities/user.entity';
+import { User } from '../users/entity/user.entity';
 import { UsersModule } from '../users/users.module';
 import { CarsController } from './cars.controller';
 import { CarsService } from './cars.service';
-import { Car } from '../../database/entities/car.entity';
-import { Role } from 'src/database/entities/role.entity';
+import { Car } from './entity/car.entity';
+import { Role } from 'src/app/roles/entity/role.entity';
 
 @Module({
   controllers: [CarsController],

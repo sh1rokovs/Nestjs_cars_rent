@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 
 import { UsersService } from '../users/users.service';
 import { CreateCarDto } from './dto/create-car.dto';
-import { Car } from '../../database/entities/car.entity';
+import { Car } from './entity/car.entity';
 
 @Injectable()
 export class CarsService {

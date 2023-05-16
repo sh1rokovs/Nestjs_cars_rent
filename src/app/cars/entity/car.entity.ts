@@ -7,10 +7,11 @@ import {
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 
-import { User } from 'src/database/entities/user.entity';
+import { User } from 'src/app/users/entity/user.entity';
 
 @Entity('cars')
 export class Car {
+  @ApiProperty({ example: '1', description: 'Идентификатор' })
   @PrimaryGeneratedColumn()
   id: number;
 

@@ -1,13 +1,14 @@
 import { Body, Controller, Get, Post, Param, UseGuards } from '@nestjs/common';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { CreateUserDto } from './dto/create-user.dto';
-import { User } from '../../database/entities/user.entity';
+import { User } from './entity/user.entity';
 import { UsersService } from './users.service';
 import { Roles } from 'src/decorators/roles-auth.decorator';
 import { RoleGuard } from 'src/guards/roles.guards';
 import { AddRoleDto } from './dto/add-role.dto';
 
+@ApiTags('Пользователи')
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
@@ -27,14 +28,14 @@ export class UsersController {
   }
 
   @ApiOperation({ summary: 'Получить конкретного пользователя' })
-  @ApiResponse({ status: 200 })
+  @ApiResponse({ status: 200, type: User })
   @Get(':id')
   getOne(@Param('id') id: number) {
     return this.usersService.getOneUser(id);
   }
 
   @ApiOperation({ summary: 'Выдать роль' })
-  @ApiResponse({ status: 200 })
+  @ApiResponse({ status: 200, type: AddRoleDto })
   @Roles('admin')
   @UseGuards(RoleGuard)
   @Post('/role')

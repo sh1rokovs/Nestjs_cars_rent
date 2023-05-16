@@ -9,9 +9,9 @@ import { CarsModule } from './app/cars/cars.module';
 import { FilesModule } from './app/files/files.module';
 import { RolesModule } from './app/roles/roles.module';
 import { UsersModule } from './app/users/users.module';
-import { Car } from './database/entities/car.entity';
-import { Role } from './database/entities/role.entity';
-import { User } from './database/entities/user.entity';
+import { Car } from './app/cars/entity/car.entity';
+import { Role } from './app/roles/entity/role.entity';
+import { User } from './app/users/entity/user.entity';
 
 @Module({
   controllers: [],

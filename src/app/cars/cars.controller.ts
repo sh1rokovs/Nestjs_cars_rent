@@ -1,10 +1,11 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
-import { Car } from '../../database/entities/car.entity';
+import { Car } from './entity/car.entity';
 
+@ApiTags('Автомобили')
 @Controller('cars')
 export class CarsController {
   constructor(private carsService: CarsService) {}

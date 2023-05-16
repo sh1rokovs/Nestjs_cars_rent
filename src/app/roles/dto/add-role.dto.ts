@@ -6,7 +6,7 @@ export class AddRoleDto {
   @IsString({ message: 'Должно быть строковым значением' })
   readonly value: string;
 
-  @ApiProperty({ example: 'user', description: 'Значение роли' })
-  @IsNumber({}, { message: 'Должноб ыть числом' })
+  @ApiProperty({ example: '1', description: 'Идентификатор' })
+  @IsNumber({}, { message: 'Должно быть числом' })
   readonly userId: number;
 }

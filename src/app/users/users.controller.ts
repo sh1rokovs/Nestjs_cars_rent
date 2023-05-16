@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Param, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Param,
+  UseGuards,
+  Delete,
+} from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { CreateUserDto } from './dto/create-user.dto';
@@ -6,7 +14,7 @@ import { User } from './entity/user.entity';
 import { UsersService } from './users.service';
 import { Roles } from 'src/decorators/roles-auth.decorator';
 import { RoleGuard } from 'src/guards/roles.guards';
-import { AddRoleDto } from './dto/add-role.dto';
+import { AddRoleDto } from '../roles/dto/add-role.dto';
 
 @ApiTags('Пользователи')
 @Controller('users')
@@ -27,13 +35,6 @@ export class UsersController {
     return this.usersService.getAllUsers();
   }
 
-  @ApiOperation({ summary: 'Получить конкретного пользователя' })
-  @ApiResponse({ status: 200, type: User })
-  @Get(':id')
-  getOne(@Param('id') id: number) {
-    return this.usersService.getOneUser(id);
-  }
-
   @ApiOperation({ summary: 'Выдать роль' })
   @ApiResponse({ status: 200, type: AddRoleDto })
   @Roles('admin')
@@ -43,11 +44,18 @@ export class UsersController {
     return this.usersService.addRole(dto);
   }
 
+  @ApiOperation({ summary: 'Получить конкретного пользователя' })
+  @ApiResponse({ status: 200, type: User })
+  @Get(':id')
+  getOne(@Param('id') id: number) {
+    return this.usersService.getOneUser(id);
+  }
+
   @ApiOperation({ summary: 'Удалить пользователя' })
   @ApiResponse({ status: 200 })
   @Roles('admin')
   @UseGuards(RoleGuard)
-  @Get(':id')
+  @Delete(':id')
   removeUser(@Param('id') id: number): Promise<void> {
     return this.usersService.remove(id);
   }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { CreateRoleDto } from './dto/create-role.dto';
@@ -26,7 +26,7 @@ export class RolesController {
 
   @ApiOperation({ summary: 'Удалить роль' })
   @ApiResponse({ status: 200 })
-  @Get('/:id')
+  @Delete('/:id')
   removeRole(@Param('id') id: number) {
     return this.rolesService.removeRole(id);
   }

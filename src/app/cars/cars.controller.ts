@@ -12,7 +12,7 @@ export class CarsController {
 
   @Post()
   @ApiOperation({ summary: 'Добавить автомобиль' })
-  @ApiResponse({ status: 204 })
+  @ApiResponse({ status: 200, type: Car })
   @ApiResponse({ status: 404, description: 'Автомобиль не найден' })
   create(@Body() createCar: CreateCarDto) {
     return this.carsService.createCar(createCar);
@@ -20,7 +20,7 @@ export class CarsController {
 
   @Get()
   @ApiOperation({ summary: 'Получить все незаброинрованые автомобили' })
-  @ApiResponse({ status: 204 })
+  @ApiResponse({ status: 200, type: [Car] })
   @ApiResponse({ status: 404, description: 'Автомобиль не найден' })
   getAllNoRent(): Promise<Car[]> {
     return this.carsService.getAllNoRent();
@@ -28,7 +28,7 @@ export class CarsController {
 
   @Get('/rent-cars')
   @ApiOperation({ summary: 'Получить все забронированые автомобили' })
-  @ApiResponse({ status: 204 })
+  @ApiResponse({ status: 200, type: [Car] })
   @ApiResponse({ status: 404, description: 'Автомобиль не найден' })
   getAllRent(): Promise<Car[]> {
     return this.carsService.getAllRent();
@@ -36,7 +36,7 @@ export class CarsController {
 
   @Get('/rent/:id')
   @ApiOperation({ summary: 'Забронировать автомобиль' })
-  @ApiResponse({ status: 204 })
+  @ApiResponse({ status: 200, type: Car })
   @ApiResponse({ status: 404, description: 'Автомобиль не найден' })
   rentCar(@Param('id') id: number): Promise<Car> {
     return this.carsService.rentCar(id);
@@ -44,7 +44,7 @@ export class CarsController {
 
   @Get('/unrent/:id')
   @ApiOperation({ summary: 'Снять автомобиль с брони' })
-  @ApiResponse({ status: 204 })
+  @ApiResponse({ status: 200, type: Car })
   @ApiResponse({ status: 404, description: 'Автомобиль не найден' })
   unrentCar(@Param('id') id: number): Promise<Car> {
     return this.carsService.unrentCar(id);
@@ -52,7 +52,7 @@ export class CarsController {
 
   @Delete('/remove/:id')
   @ApiOperation({ summary: 'Удалить автомобиль' })
-  @ApiResponse({ status: 204 })
+  @ApiResponse({ status: 200 })
   @ApiResponse({ status: 404, description: 'Автомобиль не найден' })
   remove(@Param('id') id: number): Promise<void> {
     return this.carsService.removeCar(id);

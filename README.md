@@ -20,3 +20,11 @@ Swagger
 ```bash
 localhost:8080/api/swagger
 ```
+
+## DB
+
+Postgres / TypeOrm
+
+```bash
+localhost:5432
+```

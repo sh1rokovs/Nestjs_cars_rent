@@ -4,10 +4,10 @@ import { User } from '../entities/user.entity';
 
 export default setSeederFactory(User, (faker) => {
   const user = new User();
-  user.username = faker.name.firstName('male');
-  user.password = faker.name.lastName('male');
-  user.email = 'asfasfasf';
-  user.phone = '12312412414';
+  user.username = faker.internet.userName();
+  user.password = faker.internet.password();
+  user.email = faker.internet.email(user.username, 'example');
+  user.phone = faker.phone.number();
 
   return user;
 });

@@ -13,6 +13,14 @@
 Nest.js, TypeOrm, Postgres
 ```
 
+## Techniques
+
+Получилось сделать
+
+```bash
+Seed, Migration, Auth, Jwt.
+```
+
 ## Установка и Запуск приложения
 
 ```bash

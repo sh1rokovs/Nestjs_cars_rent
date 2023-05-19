@@ -20,13 +20,13 @@ export class UsersService {
 
   async createUser(createUser: CreateUserDto): Promise<User> {
     const user = new User();
-    const role = await this.rolesService.getRole('user');
+    // const role = await this.rolesService.getRole('user');
 
     user.username = createUser.username;
     user.email = createUser.email;
     user.password = createUser.password;
     user.phone = createUser.phone;
-    user.roles = [role];
+    user.roles = [];
     user.cars = [];
 
     return await this.usersRepository.save(user);

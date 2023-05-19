@@ -7,8 +7,8 @@ import {
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 
-import { Role } from 'src/database/entities/role.entity';
-import { Car } from 'src/database/entities/car.entity';
+import { Role } from './role.entity';
+import { Car } from './car.entity';
 
 @Entity('users')
 export class User {
@@ -45,4 +45,5 @@ export class User {
   @ManyToMany(() => Car)
   @JoinTable()
   cars: Car[];
+  user: Car;
 }

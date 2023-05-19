@@ -8,7 +8,7 @@ import { AuthModule } from './app/auth/auth.module';
 import { CarsModule } from './app/cars/cars.module';
 import { RolesModule } from './app/roles/roles.module';
 import { UsersModule } from './app/users/users.module';
-import { appDataSource } from './database/config/typeorm.config';
+import { appDataSource } from './database/config/orm.config';
 
 @Module({
   controllers: [],

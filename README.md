@@ -21,7 +21,13 @@ Nest.js, TypeOrm, Postgres
 Seed, Migration, Auth, Jwt, Guard, Pipe, Factory
 ```
 
-## Установка и Запуск приложения
+## Установка зависимостей, применение миграций, наполнение бд тестовыми данными и запуск приложения
+
+```bash
+install_and_start.sh
+```
+
+## Последующий запуск
 
 ```bash
 install_and_start.sh

@@ -18,7 +18,7 @@ Nest.js, TypeOrm, Postgres
 Получилось сделать
 
 ```bash
-Seed, Migration, Auth, Jwt.
+Seed, Migration, Auth, Jwt, Guard, Pipe
 ```
 
 ## Установка и Запуск приложения

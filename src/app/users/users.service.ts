@@ -27,7 +27,7 @@ export class UsersService {
     user.password = createUser.password;
     user.phone = createUser.phone;
     user.roles = [role];
-    user.roles = [];
+    user.cars = [];
 
     return await this.usersRepository.save(user);
   }

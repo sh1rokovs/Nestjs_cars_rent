@@ -15,6 +15,14 @@ export default class UserSeeder implements Seeder {
 
     await roleFactory.saveMany(1);
 
+    const repository = dataSource.getRepository(Role);
+    await repository.insert([
+      {
+        value: 'user',
+        description: 'Пользователь',
+      },
+    ]);
+
     // car
     const carFactory = await factoryManager.get(Car);
 

@@ -8,7 +8,7 @@ export default setSeederFactory(Car, (faker) => {
   car.mark = faker.vehicle.model();
   car.model = faker.vehicle.model();
   car.price = Number(faker.random.numeric(4));
-  car.rent = faker.datatype.boolean();
+  car.rent = false;
   car.img = faker.image.image();
 
   return car;

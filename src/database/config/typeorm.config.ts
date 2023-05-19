@@ -30,7 +30,14 @@ const options = (): DataSourceOptions => {
       ),
     ],
     migrations: [
-      join(process.cwd(), 'database', 'migrations', '**', 'migrations.ts'),
+      join(
+        process.cwd(),
+        'src',
+        'database',
+        'migrations',
+        '**',
+        '*migration.ts',
+      ),
     ],
     migrationsRun: true,
     migrationsTableName: 'migrations',

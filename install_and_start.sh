@@ -1,1 +1,1 @@
-yarn install && yarn run build && yarn run start
+yarn install && yarn run db:prepare && yarn run start

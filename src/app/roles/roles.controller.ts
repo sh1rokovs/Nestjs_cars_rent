@@ -17,8 +17,6 @@ export class RolesController {
     return this.rolesService.createRole(createRole);
   }
 
-  @ApiOperation({ summary: 'Вывести роль' })
-  @ApiResponse({ status: 200, type: Role })
   @Get('/:value')
   getRole(@Param('value') value: string) {
     return this.rolesService.getRole(value);

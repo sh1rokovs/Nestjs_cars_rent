@@ -19,7 +19,16 @@ const options = (): DataSourceOptions => {
     type: 'postgres',
     schema: 'public',
     logging: configService.get('DB_LOGS') === 'true',
-    entities: [],
+    entities: [
+      join(
+        process.cwd(),
+        'dist',
+        'database',
+        'entities',
+        '**',
+        '*.entity.{ts,js}',
+      ),
+    ],
     migrations: [
       join(process.cwd(), 'database', 'migrations', '**', 'migrations.ts'),
     ],

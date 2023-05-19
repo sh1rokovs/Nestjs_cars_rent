@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { User } from '../users/entity/user.entity';
+import { User } from '../../database/entities/user.entity';
 import { CarsController } from './cars.controller';
 import { CarsService } from './cars.service';
-import { Car } from './entity/car.entity';
+import { Car } from '../../database/entities/car.entity';
 
 @Module({
   controllers: [CarsController],

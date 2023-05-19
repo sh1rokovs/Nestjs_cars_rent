@@ -10,7 +10,7 @@ import {
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { CreateUserDto } from './dto/create-user.dto';
-import { User } from './entity/user.entity';
+import { User } from '../../database/entities/user.entity';
 import { UsersService } from './users.service';
 import { Roles } from 'src/decorators/roles-auth.decorator';
 import { RoleGuard } from 'src/guards/roles.guards';

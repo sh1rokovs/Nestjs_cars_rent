@@ -24,13 +24,13 @@ Seed, Migration, Auth, Jwt, Guard, Pipe, Factory
 ## Установка зависимостей, применение миграций, наполнение бд тестовыми данными и запуск приложения
 
 ```bash
-install_and_start.sh
+deploy.sh
 ```
 
 ## Последующий запуск
 
 ```bash
-install_and_start.sh
+start.sh
 ```
 
 ## API
